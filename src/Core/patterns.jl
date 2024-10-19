@@ -1,6 +1,6 @@
 module Patterns
 
-using FilePathsBase: AbstractPath
+using FilePathsBase: AbstractPath, string
 using Glob
 
 export matches_pattern
@@ -11,10 +11,12 @@ function matches_pattern(file::AbstractPath, pattern::String)
         return true
     end
 
-    # Use Glob to create a list of matching files
-    # If the file is in the matched list, return true
-    matched_files = Glob.glob(pattern, dirname(string(file)))
-    return string(file) in matched_files
+    # Convert the file path to string
+    file_str = string(file)
+
+    # Use Glob to create a list of matching files in the file's directory
+    matched_files = Glob.glob(pattern, dirname(file_str))
+    return file_str in matched_files
 end
 
 end # module Patterns
