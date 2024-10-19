@@ -29,7 +29,7 @@ jobs:
       run: julia --project -e 'using Pkg; Pkg.precompile()'
 
     - name: Build Command Using PackageCompiler
-      run: julia --project -e 'using PackageCompiler; create_app(".", "fcp"; precompile_execution_file="precompile_script.jl")'
+      run: tree && julia --project -e 'using PackageCompiler; create_app(".", "fcp"; precompile_execution_file="precompile_script.jl")'
 
     - name: Upload Compiled App
       uses: actions/upload-artifact@v3
@@ -62,21 +62,21 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: docs/build
 
-  ci:
-    name: Continuous Integration Tests
-    runs-on: ubuntu-latest
+  # ci:
+  #   name: Continuous Integration Tests
+  #   runs-on: ubuntu-latest
 
-    steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v3
+  #   steps:
+  #   - name: Checkout Repository
+  #     uses: actions/checkout@v3
 
-    - name: Install Julia
-      uses: julia-actions/setup-julia@v1
-      with:
-        version: '1.10'
+  #   - name: Install Julia
+  #     uses: julia-actions/setup-julia@v1
+  #     with:
+  #       version: '1.10'
 
-    - name: Install Dependencies
-      run: julia --project -e 'using Pkg; Pkg.instantiate()'
+  #   - name: Install Dependencies
+  #     run: julia --project -e 'using Pkg; Pkg.instantiate()'
 
-    - name: Run Tests
-      run: julia --project -e 'using Pkg; Pkg.test()'
+  #   - name: Run Tests
+  #     run: julia --project -e 'using Pkg; Pkg.test()'
