@@ -1,0 +1,12 @@
+name = "Fcp"
+uuid = "6e6264da-3f0c-4a6d-97f0-ce4eb4748c1f"
+authors = ["Luftalian <springtechtree@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+ArgParse = "c7e460c6-2fb9-53a9-8c5b-16f535851c63"
+FilePathsBase = "48062228-2e41-5def-b9a4-89aafe57970f"
+Glob = "c27321d9-0574-5035-807b-f59d2c89b15c"
+Logging = "56ddb016-857b-54e1-b83d-db4d58db5568"
+PackageCompiler = "9b87118b-4619-50d2-8e1e-99f35a4d4d9d"
+TOML = "fa267f1f-6049-4f14-aa54-33bafae1ed76"

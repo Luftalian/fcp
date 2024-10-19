@@ -1,0 +1,32 @@
+
+### 6. Set Up Continuous Integration
+
+Use GitHub Actions to automate testing.
+
+#### `.github/workflows/ci.yml`
+
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Julia
+        uses: julia-actions/setup-julia@v1
+        with:
+          version: '1.9'  # Update to the Julia version you are using
+
+      - name: Install dependencies
+        run: julia --project -e 'using Pkg; Pkg.instantiate()'
+
+      - name: Run tests
+        run: julia --project -e 'using Pkg; Pkg.test()'
